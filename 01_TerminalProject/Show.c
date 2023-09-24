@@ -12,14 +12,13 @@
 #define TextArg(t) (int) (t).size, (t).data
 #define TextLine(t, i) ((t).lines.items[(i)])
 
-// Doesn't include newline
 #define LineSize(l) ((l).end - (l).begin)
 #define LineFormat "%.*s"
 #define LineArg(t, i) (int) LineSize(TextLine((t), (i))), &(t).data[TextLine((t), (i)).begin]
 
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define min(a, b) ((a) < (b) ? (a) : (b))
 
-#define LineArgMax(t, i, s) (int) MIN(LineSize(TextLine((t), (i))), s), &(t).data[TextLine((t), (i)).begin]
+#define LineArgMax(t, i, s) (int) min(LineSize(TextLine((t), (i))), s), &(t).data[TextLine((t), (i)).begin]
 
 typedef struct {
     size_t begin;
@@ -81,17 +80,11 @@ void close_file(Text file) {
     free(file.lines.items);
 }
 
-#define TEST_SELF_SOURCE
-
 int main(int argc, const char **argv) {
     const char *filename;
     if (argc < 2) {
-#ifdef TEST_SELF_SOURCE
-        filename = "Show.c";
-#else
         printf("Usage: %s <file>\n", argv[0]);
         return 1;
-#endif
     } else {
         filename = argv[1];
     }
@@ -116,7 +109,7 @@ int main(int argc, const char **argv) {
         hline(ACS_HLINE, width);
         mvaddch(1, 5, ACS_TTEE);
         move(2, 0);
-        for (int i = 0; i < height - 2; i++) {
+        for (int i = 0; i < min(height - 2, file.lines.count); i++) {
             printw("%5d", cursor + i + 1);
             addch(ACS_VLINE);
             mvprintw(i + 2, 6, LineFormat"\n", LineArgMax(file, cursor + i, width - 6));
@@ -128,7 +121,7 @@ int main(int argc, const char **argv) {
                 break;
             case KEY_SPACE:
                 cursor++;
-                if (cursor >= max_cursor) {
+                if (max_cursor >= 0 && cursor >= max_cursor) {
                     cursor = max_cursor;
                 }
                 break;

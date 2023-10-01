@@ -1,0 +1,7 @@
+prog
+prog-a
+prog-so
+liboutput_static.a
+liboutput.so
+*.o
+*.out

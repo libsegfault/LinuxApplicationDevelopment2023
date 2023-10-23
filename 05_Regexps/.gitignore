@@ -1,0 +1,5 @@
+esub
+*.o
+*.out
+test*.txt
+ref*.txt

@@ -1,0 +1,38 @@
+From 5adfb53c61dd8dfc391145dc20ef682369b5ed00 Mon Sep 17 00:00:00 2001
+From: libsegfault <145391503+libsegfault@users.noreply.github.com>
+Date: Thu, 23 Nov 2023 19:50:48 +0300
+Subject: [PATCH 3/3] PatchDiff: Configurable random number generator seed
+
+---
+ 09_PatchDiff/maze.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/09_PatchDiff/maze.c b/09_PatchDiff/maze.c
+index 722202a..cb9bc94 100644
+--- a/09_PatchDiff/maze-v2.c
++++ b/09_PatchDiff/maze-v3.c
+@@ -6,15 +6,15 @@
+ #define bwall(map, x, y) map[2*((y) - 1) + 2][2*((x) - 1) + 1]
+ 
+ int main(int argc, char **argv) {
+-    if (argc < 3) {
+-        printf("Usage: %s '<empty char><full char>' size\n", argv[0]);
++    if (argc < 4) {
++        printf("Usage: %s seed '<empty char><full char>' size\n", argv[0]);
+         return 1;
+     }
+-    const size_t size = strtoul(argv[2], NULL, 10);
++    const size_t size = strtoul(argv[3], NULL, 10);
+     const size_t map_size = size * 2 + 1;
+-    const char empty = argv[1][0];
+-    const char full = argv[1][1];
+-    srand(time(NULL));
++    const char empty = argv[2][0];
++    const char full = argv[2][1];
++    srand(strtoul(argv[1], NULL, 10));
+ 
+     char (*map)[map_size] = calloc(sizeof(*map), map_size);
+ 
+-- 
+2.42.1
+

@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: /dev/null\n"
+"POT-Creation-Date: 2023-12-05 21:56+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: @libsegfault >\n"
+"Language-Team: Russian <gnu@d07.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: guess.c:160
+#, c-format
+msgid "Usage: %s [OPTIONS...]\n"
+msgstr "Использование: %s [ПАРАМЕТРЫ...]\n"
+
+#: guess.c:179
+#, c-format
+msgid "\nReport bugs to %s\n"
+msgstr "\nОб ошибках сообщайте по адресу %s\n"
+
+#: guess.c:194
+msgid "Use roman numbers for output"
+msgstr "Использовать римские числа для вывода"
+
+#: guess.c:195
+msgid "Give a short usage message"
+msgstr "Показать короткую справка"
+
+#: guess.c:196
+msgid "Give this help list"
+msgstr "Показать эту справку"
+
+#: guess.c:201
+msgid "guess is a program which can guess numbers"
+msgstr "guess - программа, которая угадывает числа"
+
+#: guess.c:212
+#, c-format
+msgid "Pick a number from the interval [1, %zu] and I'll try to guess it\n"
+msgstr "Выберите число из интервала [1, %zu], и я попробую его угадать\n"
+
+#: guess.c:221
+#, c-format
+msgid "Is your number greater than %s (y/n)?\n"
+msgstr "Ваше число больше, чем %s (д/н)?\n"
+
+#: guess.c:223
+#, c-format
+msgid "Is your number greater than %d (y/n)?\n"
+msgstr "Ваше число больше, чем %d (д/н)?\n"
+
+#: guess.c:229
+msgid "y"
+msgstr "д"
+
+#: guess.c:231
+msgid "n"
+msgstr "н"
+
+#: guess.c:238
+#, c-format
+msgid "Your number is %s\n"
+msgstr "Ваше число - %s\n"
+
+#: guess.c:240
+#, c-format
+msgid "Your number is %d\n"
+msgstr "Ваше число - %d\n"
